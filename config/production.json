@@ -1,0 +1,4 @@
+{
+    "mongoURI": "mongodb+srv://samuel_wondimu:samuel123@inchina.nfudf.mongodb.net/InChina?retryWrites=true&w=majority",
+    "jwtSecret": "samuelthecoder"
+}
