@@ -1,7 +1,7 @@
 {
-  "name": "inchina blog community",
+  "name": "inchina",
   "version": "1.0.0",
-  "description": "Social network for foriegners",
+  "description": "Social network for forinergs",
   "main": "server.js",
   "scripts": {
     "start": "node server",
