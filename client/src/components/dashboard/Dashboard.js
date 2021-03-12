@@ -23,6 +23,7 @@ const Dashboard = ({
             <img
               src={user && user.avatar}
               style={{ width: '300px', borderRadius: '50%' }}
+              alt="profile"
             />
             <h1>{user && user.name}</h1>
             <h3>{profile && profile.bio}</h3>

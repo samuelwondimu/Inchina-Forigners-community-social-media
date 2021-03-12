@@ -447,11 +447,11 @@ img {
 }
 
 .profile-top img {
-  width: 50px;
+  width: 150px;
 }
 
 .profile-top .icons a {
-  color: #fff;
+  color: #333;
   margin: 0 0.3rem;
 }
 

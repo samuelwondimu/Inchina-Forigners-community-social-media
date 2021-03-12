@@ -30,8 +30,18 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
               </Link>
             )}
           <div className="profile-grid my-1">
-            <ProfileTop profile={profile} />
-            <ProfileAbout profile={profile} />
+            <div class="float-container">
+              <div class="float-child">
+                <div class="green text-center">
+                  <ProfileTop profile={profile} />
+                </div>
+              </div>
+
+              <div class="float-child">
+                <div class="blue"></div>
+                <ProfileAbout profile={profile} />
+              </div>
+            </div>
           </div>
         </Fragment>
       )}
