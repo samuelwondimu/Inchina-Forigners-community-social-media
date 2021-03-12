@@ -43,7 +43,7 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
         />
       </li>
       <li>
-        <Link to="/profiles">expacts</Link>
+        <Link to="/profiles">Community</Link>
       </li>
       <li>
         <Link to="/register">register</Link>
@@ -57,7 +57,7 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
   return (
     <nav className="navbar">
       <h1>
-        <Link to="/">inChina</Link>
+        <Link to="/">inChina Community</Link>
       </h1>
       <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
     </nav>

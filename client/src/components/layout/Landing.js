@@ -16,13 +16,11 @@ const Landing = ({ isAuthenticated }) => {
           <h2>
             Welcome to InChina
             <br />
-            <span>Forigners Community blog post</span>
+            <span>Forigners Community Social Media</span>
           </h2>
           <p>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minus
-            consectetur, quia, natus vitae velit odio laborum dicta quisquam
-            minima sunt dolor quod voluptate, iure sed maiores animi unde.
-            Repellat, eum!
+            Where you can share/exchnage information, idea, career interst...and
+            so much more with foriegners living in china.
           </p>
           <Link className="btn" to="/login">
             LOG IN
