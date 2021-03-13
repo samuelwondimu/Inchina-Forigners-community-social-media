@@ -8,10 +8,12 @@ import {
   ADD_COMMENT,
   REMOVE_COMMENT,
   GET_USERPOSTS
+  // CLEAR_POSTS
 } from '../actions/types';
 
 const initialState = {
   posts: [],
+  userposts: [],
   post: null,
   loading: true,
   error: {}
@@ -30,9 +32,15 @@ function postReducer(state = initialState, action) {
     case GET_USERPOSTS:
       return {
         ...state,
-        posts: payload,
+        userposts: payload,
         loading: false
       };
+    // case CLEAR_POSTS:
+    //   return {
+    //     ...state,
+    //     posts: payload,
+    //     loading: false
+    //   };
     case GET_POST:
       return {
         ...state,

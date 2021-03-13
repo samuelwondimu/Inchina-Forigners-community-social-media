@@ -52,9 +52,6 @@ const Dashboard = ({
                     <i class="far fa-smile"></i> <span>Skills</span>
                     {profile.skills.map((skill) => skill + ',')}
                   </li>
-                  <li>
-                    <i class="fas fa-link"></i>
-                  </li>
                 </ul>
 
                 <button className="btn" onClick={() => deleteAccount()}>

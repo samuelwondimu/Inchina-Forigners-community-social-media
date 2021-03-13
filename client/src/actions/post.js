@@ -10,10 +10,12 @@ import {
   ADD_COMMENT,
   REMOVE_COMMENT,
   GET_USERPOSTS
+  // CLEAR_POSTS
 } from './types';
 
 // Get posts
 export const getPosts = () => async (dispatch) => {
+  // dispatch({ type: CLEAR_POSTS });
   try {
     const res = await api.get('/posts');
 
@@ -31,6 +33,7 @@ export const getPosts = () => async (dispatch) => {
 
 // Get user posts
 export const getUserPosts = (id) => async (dispatch) => {
+  // dispatch({ type: CLEAR_POSTS });
   try {
     const res = await api.get(`/posts/user/${id}`);
 
