@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import DashboardActions from './DashboardActions';
+import UserPosts from './UserPosts';
 import { getCurrentProfile, deleteAccount } from '../../actions/profile';
 
 const Dashboard = ({
@@ -20,13 +21,16 @@ const Dashboard = ({
       <div class="float-container">
         <div class="float-child">
           <div class="green text-center">
-            <img
-              src={user && user.avatar}
-              style={{ width: '300px', borderRadius: '50%' }}
-              alt="profile"
-            />
-            <h1>{user && user.name}</h1>
-            <h3>{profile && profile.bio}</h3>
+            <div className="profile-top p-2">
+              <img
+                className="round-img my-1"
+                src={user && user.avatar}
+                style={{ width: '300px', borderRadius: '50%' }}
+                alt="profile"
+              />
+              <h1 className="large">{user && user.name}</h1>
+              <h3>{profile && profile.bio}</h3>
+            </div>
           </div>
         </div>
 
@@ -67,6 +71,9 @@ const Dashboard = ({
             )}
           </div>
         </div>
+      </div>
+      <div style={{ width: '100%', paddingTop: '500px' }}>
+        <UserPosts />
       </div>
     </Fragment>
   );

@@ -6,7 +6,8 @@ import {
   ADD_POST,
   GET_POST,
   ADD_COMMENT,
-  REMOVE_COMMENT
+  REMOVE_COMMENT,
+  GET_USERPOSTS
 } from '../actions/types';
 
 const initialState = {
@@ -21,6 +22,12 @@ function postReducer(state = initialState, action) {
 
   switch (type) {
     case GET_POSTS:
+      return {
+        ...state,
+        posts: payload,
+        loading: false
+      };
+    case GET_USERPOSTS:
       return {
         ...state,
         posts: payload,

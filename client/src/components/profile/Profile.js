@@ -32,7 +32,7 @@ const Profile = ({ getProfileById, profile: { profile }, auth, match }) => {
           <div className="profile-grid my-1">
             <div class="float-container">
               <div class="float-child">
-                <div class="green text-center">
+                <div class="green">
                   <ProfileTop profile={profile} />
                 </div>
               </div>
