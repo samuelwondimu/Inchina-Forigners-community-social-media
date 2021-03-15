@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { getCurrentProfile, deleteAccount } from '../../actions/profile';
 import ProfileItem from './ProfileItem';
 import UserPosts from './UserPosts';
@@ -10,7 +11,7 @@ const Dashboard = ({
   getCurrentProfile,
   deleteAccount,
   auth: { user },
-  profile: { profile }
+  profile: { profile, loading }
 }) => {
   useEffect(() => {
     getCurrentProfile();
@@ -19,7 +20,8 @@ const Dashboard = ({
   return (
     <Fragment>
       <p className="lead">Welcome {user && user.name}</p>
-      {profile ? (
+
+      {profile !== null ? (
         <div>
           <ProfileItem profile={profile} />
           <div>
@@ -34,7 +36,10 @@ const Dashboard = ({
         </div>
       ) : (
         <Fragment>
-          <Spinner />
+          <p>You have not yet setup a profile, please add some info</p>
+          <Link to="/create-profile" className="btn btn-primary my-1">
+            Create Profile
+          </Link>
         </Fragment>
       )}
     </Fragment>

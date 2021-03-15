@@ -329,7 +329,7 @@ img {
   z-index: 1;
   width: 100%;
   top: 0;
-  background-color: #017143;
+  background: #017143;
   border-bottom: 3px solid #017143;
   opacity: 0.9;
 }
