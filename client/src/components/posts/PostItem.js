@@ -63,7 +63,6 @@ const PostItem = ({
         )}
       </div>
     </div>
-    <hr></hr>
   </Fragment>
 );
 

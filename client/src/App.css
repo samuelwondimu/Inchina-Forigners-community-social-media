@@ -18,7 +18,7 @@ body {
   font-family: 'Raleway', sans-serif;
   font-size: 1rem;
   line-height: 1.6;
-  background-color: #fff;
+  background-color: #ffffff;
   color: #333;
 }
 
@@ -525,19 +525,28 @@ img {
 .post-form form textarea {
   padding: 0.5rem;
   width: 100%;
+
   border: 3px solid #017143;
 }
 .post-form form textarea:focus {
   outline: none !important;
   border: 3px solid #017143;
 }
+
 hr {
-  border: none;
-  border-top: 2px solid #017143;
+  margin: 20px;
+  border: 0;
+  height: 0; /* Firefox... */
+  box-shadow: 0 0 10px 1px #017143;
+}
+hr:after {
+  /* Not really supposed to work, but does */
+  content: '\00a0'; /* Prevent margin collapse */
 }
 .post {
-  border: none;
   display: grid;
+  border: 1px solid #c9c9c9;
+  border-radius: 20px;
   grid-template-columns: 1fr 4fr;
   grid-gap: 2rem;
   align-items: center;
@@ -565,8 +574,7 @@ hr {
 }
 /* my profile */
 .float-container {
-  border: 3px solid #fff;
-  padding: 20px;
+  height: 57vh;
 }
 
 .float-child {

@@ -21,20 +21,14 @@ const Dashboard = ({
       <p className="lead">Welcome {user && user.name}</p>
       {profile ? (
         <div>
-          {/* <p>{profile.bio}</p> */}
           <ProfileItem profile={profile} />
-          <button
-            style={{
-              padding: '9px',
-              marginLeft: '173px',
-              marginBottom: '20px'
-            }}
-            className="btn btn-danger my-1"
-            onClick={() => deleteAccount()}
-          >
-            Delete Account
-          </button>
-          <div style={{ paddingTop: '5px' }}>
+          <div>
+            <button className="btn btn-danger" onClick={() => deleteAccount()}>
+              Delete Account
+            </button>
+          </div>
+
+          <div>
             <UserPosts />
           </div>
         </div>

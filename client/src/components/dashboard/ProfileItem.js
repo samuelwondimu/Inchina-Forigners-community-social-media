@@ -69,7 +69,6 @@ const ProfileItem = ({
                     </div>
                   ))}
                 </div>
-                <p>you have not yet setup a profile, please add some info</p>
               </Fragment>
             </div>
           </div>
