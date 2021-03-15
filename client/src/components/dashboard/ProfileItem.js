@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import DashboardActions from './DashboardActions';
+import { deleteAccount } from '../../actions/profile';
 
 const ProfileItem = ({
   profile: {
@@ -13,7 +14,8 @@ const ProfileItem = ({
     social,
     skills,
     user: { avatar, name }
-  }
+  },
+  deleteAccount
 }) => {
   return (
     <Fragment>
@@ -70,11 +72,8 @@ const ProfileItem = ({
                   ))}
                 </div>
                 <p>you have not yet setup a profile, please add some info</p>
-                <Link to="/create-profile" className="btn my-1">
-                  Create Profile
-                </Link>
               </Fragment>
-              {/* <button
+              <button
                 style={{
                   padding: '9px',
                   marginLeft: '20px',
@@ -84,7 +83,7 @@ const ProfileItem = ({
                 onClick={() => deleteAccount()}
               >
                 Delete Account
-              </button> */}
+              </button>
             </div>
           </div>
         </div>
