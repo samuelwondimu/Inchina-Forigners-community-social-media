@@ -1,13 +1,14 @@
 import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getCurrentProfile } from '../../actions/profile';
+import { getCurrentProfile, deleteAccount } from '../../actions/profile';
 import ProfileItem from './ProfileItem';
 import UserPosts from './UserPosts';
 import Spinner from '../layout/Spinner';
 
 const Dashboard = ({
   getCurrentProfile,
+  deleteAccount,
   auth: { user },
   profile: { profile }
 }) => {
@@ -22,7 +23,18 @@ const Dashboard = ({
         <div>
           {/* <p>{profile.bio}</p> */}
           <ProfileItem profile={profile} />
-          <div style={{ paddingTop: '500px' }}>
+          <button
+            style={{
+              padding: '9px',
+              marginLeft: '173px',
+              marginBottom: '20px'
+            }}
+            className="btn btn-danger my-1"
+            onClick={() => deleteAccount()}
+          >
+            Delete Account
+          </button>
+          <div style={{ paddingTop: '5px' }}>
             <UserPosts />
           </div>
         </div>
@@ -36,6 +48,7 @@ const Dashboard = ({
 };
 Dashboard.propTypes = {
   getCurrentProfile: PropTypes.func.isRequired,
+  deleteAccount: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired,
   profile: PropTypes.object.isRequired
 };
@@ -46,5 +59,6 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, {
-  getCurrentProfile
+  getCurrentProfile,
+  deleteAccount
 })(Dashboard);
