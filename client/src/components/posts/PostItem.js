@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import formatDate from '../../utils/formatDate';
 import { connect } from 'react-redux';
 import { addLike, removeLike, deletePost } from '../../actions/post';
-import Truncate from 'react-truncate';
 
 const PostItem = ({
   addLike,
@@ -23,11 +22,9 @@ const PostItem = ({
         </Link>
       </div>
       <div>
-        <Truncate lines={4} ellipsis={<span>.......</span>}>
-          {text}
-        </Truncate>
-        <p className="post-date">Posted on {formatDate(date)}</p>
+        <p>{text}</p>
 
+        <p className="post-date">Posted on {formatDate(date)}</p>
         {showActions && (
           <Fragment>
             <button

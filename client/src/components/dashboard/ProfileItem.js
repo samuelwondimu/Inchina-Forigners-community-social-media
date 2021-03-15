@@ -1,91 +1,80 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import { getCurrentProfile, deleteAccount } from '../../actions/profile';
 import DashboardActions from './DashboardActions';
 
 const ProfileItem = ({
-  getCurrentProfile,
-  deleteAccount,
-  auth: { user },
-  profile: { profile }
+  profile: {
+    company,
+    website,
+    location,
+    bio,
+    status,
+    social,
+    skills,
+    user: { avatar, name }
+  }
 }) => {
-  useEffect(() => {
-    getCurrentProfile();
-  }, [getCurrentProfile]);
-
   return (
     <Fragment>
       <div class="float-container">
         <div class="float-child">
           <div class="green text-center">
             <div className="profile-top">
-              <img className="round-img my-1" src={user.avatar} />
-              <h1 className="large">{user.name}</h1>
-              {profile ? (
-                <div>
-                  <p className="lead">
-                    {profile.status} at <span>{profile.company}</span>
-                  </p>
-                  <p>
-                    <span>{profile.location}</span>
-                  </p>
-                  <div className="icons my-1">
-                    <a
-                      href={profile.website}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      <i className="fas fa-globe fa-2x" />
-                    </a>
-                    {profile.social
-                      ? Object.entries(profile.social)
-                          .filter(([_, value]) => value)
-                          .map(([key, value]) => (
-                            <a
-                              key={key}
-                              href={value}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              <i className={`fab fa-${key} fa-2x`}></i>
-                            </a>
-                          ))
-                      : null}
-                  </div>
+              <div>
+                <img className="round-img my-1" src={avatar} />
+                <h1 className="large">{name}</h1>
+                <p className="lead">
+                  {status} at <span>{company}</span>
+                </p>
+                <p>
+                  <span>{location}</span>
+                </p>
+                <div className="icons my-1">
+                  <a href={website} target="_blank" rel="noopener noreferrer">
+                    <i className="fas fa-globe fa-2x" />
+                  </a>
+                  {social
+                    ? Object.entries(social)
+                        .filter(([_, value]) => value)
+                        .map(([key, value]) => (
+                          <a
+                            key={key}
+                            href={value}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
+                            <i className={`fab fa-${key} fa-2x`}></i>
+                          </a>
+                        ))
+                    : null}
                 </div>
-              ) : null}
+              </div>
             </div>
           </div>
         </div>
         <div class="float-child text-center">
           <div class="blue">
             <div className="profile-about p-2">
-              {profile !== null ? (
-                <Fragment>
-                  <DashboardActions />
-                  <h2>{user.name.trim().split(' ')[0]}'s Bio</h2>
-                  <p>{profile.bio}</p>
-                  <hr></hr>
-                  <h2>Skill Set</h2>
-                  <div className="skills">
-                    {profile.skills.map((skill, index) => (
-                      <div key={index} className="p-1">
-                        <i className="fas fa-check" /> {skill}
-                      </div>
-                    ))}
-                  </div>
-                </Fragment>
-              ) : (
-                <Fragment>
-                  <p>you have not yet setup a profile, please add some info</p>
-                  <Link to="/create-profile" className="btn my-1">
-                    Create Profile
-                  </Link>
-                </Fragment>
-              )}
-              <button
+              <Fragment>
+                <DashboardActions />
+                <h2>{name.trim().split(' ')[0]}'s Bio</h2>
+                <p>{bio}</p>
+                <hr></hr>
+                <h2>Skill Set</h2>
+                <div className="skills">
+                  {skills.map((skill, index) => (
+                    <div key={index} className="p-1">
+                      <i className="fas fa-check" /> {skill}
+                    </div>
+                  ))}
+                </div>
+                <p>you have not yet setup a profile, please add some info</p>
+                <Link to="/create-profile" className="btn my-1">
+                  Create Profile
+                </Link>
+              </Fragment>
+              {/* <button
                 style={{
                   padding: '9px',
                   marginLeft: '20px',
@@ -95,7 +84,7 @@ const ProfileItem = ({
                 onClick={() => deleteAccount()}
               >
                 Delete Account
-              </button>
+              </button> */}
             </div>
           </div>
         </div>
@@ -105,17 +94,7 @@ const ProfileItem = ({
 };
 
 ProfileItem.propTypes = {
-  getCurrentProfile: PropTypes.func.isRequired,
-  deleteAccount: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
   profile: PropTypes.object.isRequired
 };
 
-const mapStateToProps = (state) => ({
-  auth: state.auth,
-  profile: state.profile
-});
-
-export default connect(mapStateToProps, { getCurrentProfile, deleteAccount })(
-  ProfileItem
-);
+export default ProfileItem;
