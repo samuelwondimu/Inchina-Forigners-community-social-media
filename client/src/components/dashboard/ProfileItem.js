@@ -1,5 +1,4 @@
 import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import DashboardActions from './DashboardActions';
 
@@ -22,7 +21,7 @@ const ProfileItem = ({
           <div class="green text-center">
             <div className="profile-top">
               <div>
-                <img className="round-img my-1" src={avatar} />
+                <img className="round-img my-1" src={avatar} alt={name} />
                 <h1 className="large">{name}</h1>
                 <p className="lead">
                   {status} at <span>{company}</span>

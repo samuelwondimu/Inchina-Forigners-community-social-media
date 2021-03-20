@@ -48,7 +48,7 @@ const Dashboard = ({
                   </div>
                 }
               >
-                <UserPosts />
+                <UserPosts profile={profile} />
               </Suspense>
             </div>
           </div>
