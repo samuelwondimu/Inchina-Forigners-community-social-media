@@ -1,11 +1,13 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, lazy, Suspense } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getCurrentProfile, deleteAccount } from '../../actions/profile';
-import ProfileItem from './ProfileItem';
+// import ProfileItem from './ProfileItem';
 import UserPosts from './UserPosts';
 import Spinner from '../layout/Spinner';
+
+const ProfileItem = lazy(() => import('./ProfileItem'));
 
 const Dashboard = ({
   getCurrentProfile,
@@ -20,28 +22,45 @@ const Dashboard = ({
   return (
     <Fragment>
       <p className="lead">Welcome {user && user.name}</p>
-
-      {profile !== null ? (
-        <div>
-          <ProfileItem profile={profile} />
+      <Suspense
+        fallback={
           <div>
-            <button className="btn btn-danger" onClick={() => deleteAccount()}>
-              Delete Account
-            </button>
+            <Spinner />
           </div>
-
+        }
+      >
+        {profile !== null ? (
           <div>
-            <UserPosts />
+            <ProfileItem profile={profile} />
+            <div>
+              <button
+                className="btn btn-danger"
+                onClick={() => deleteAccount()}
+              >
+                Delete Account
+              </button>
+            </div>
+            <div>
+              <Suspense
+                fallback={
+                  <div>
+                    <Spinner />
+                  </div>
+                }
+              >
+                <UserPosts />
+              </Suspense>
+            </div>
           </div>
-        </div>
-      ) : (
-        <Fragment>
-          <p>You have not yet setup a profile, please add some info</p>
-          <Link to="/create-profile" className="btn btn-primary my-1">
-            Create Profile
-          </Link>
-        </Fragment>
-      )}
+        ) : (
+          <Fragment>
+            <p>You have not yet setup a profile, please add some info</p>
+            <Link to="/create-profile" className="btn btn-primary my-1">
+              Create Profile
+            </Link>
+          </Fragment>
+        )}
+      </Suspense>
     </Fragment>
   );
 };
