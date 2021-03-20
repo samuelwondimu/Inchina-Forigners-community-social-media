@@ -22,7 +22,11 @@ const PostItem = ({
         </Link>
       </div>
       <div>
-        <p>{text}</p>
+        <div
+          dangerouslySetInnerHTML={{
+            __html: text.substring(0, 400).trim() + '...'
+          }}
+        ></div>
 
         <p className="post-date">Posted on {formatDate(date)}</p>
         {showActions && (
