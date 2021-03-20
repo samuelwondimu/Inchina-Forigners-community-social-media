@@ -1,10 +1,15 @@
 import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { getUserPosts } from '../../actions/post';
 import formatDate from '../../utils/formatDate';
 import { addLike, removeLike, deletePost } from '../../actions/post';
+
+const Route = () => {
+  const location = useLocation();
+  return location.pathname;
+};
 
 const UserPosts = ({
   addLike,
@@ -31,7 +36,19 @@ const UserPosts = ({
               <h4 style={{ color: '#333' }}>{post.name}</h4>
             </div>
             <div>
-              <p>{post.text}</p>
+              {Route() === '/dashboard' ? (
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: post.text.substring(0, 400).trim() + '...'
+                  }}
+                ></div>
+              ) : (
+                <div
+                  dangerouslySetInnerHTML={{
+                    __html: post.text
+                  }}
+                ></div>
+              )}
 
               <p className="post-date">Posted on {formatDate(post.date)}</p>
               {showActions && (
