@@ -48,7 +48,7 @@ const Dashboard = ({
                   </div>
                 }
               >
-                <UserPosts profile={profile} />
+                {user !== null ? <UserPosts /> : <Spinner />}
               </Suspense>
             </div>
           </div>
