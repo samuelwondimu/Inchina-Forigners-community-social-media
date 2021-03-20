@@ -11,12 +11,13 @@ const UserPosts = ({
   removeLike,
   deletePost,
   getUserPosts,
+  auth: { user },
   profile: { profile },
   post: { userposts },
   showActions
 }) => {
   useEffect(() => {
-    getUserPosts(profile.user._id);
+    getUserPosts(user._id);
   }, [getUserPosts]);
   return (
     <Fragment>
@@ -77,6 +78,7 @@ UserPosts.defaultProps = {
 };
 
 UserPosts.propTypes = {
+  auth: PropTypes.object.isRequired,
   getUserPosts: PropTypes.func.isRequired,
   post: PropTypes.object.isRequired,
   profile: PropTypes.object.isRequired,
@@ -87,6 +89,7 @@ UserPosts.propTypes = {
 };
 
 const mapStateToProps = (state) => ({
+  auth: state.auth,
   post: state.post,
   profile: state.profile
 });

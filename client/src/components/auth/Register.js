@@ -33,7 +33,7 @@ const Register = ({ setAlert, register, isAuthenticated }) => {
 
   return (
     <div className="form">
-      <h1 className="large text-primary">Sign Up</h1>
+      <h1 className="large">Sign Up</h1>
 
       <form onSubmit={onSubmit}>
         <div className="form-group">
