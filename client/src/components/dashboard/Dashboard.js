@@ -40,17 +40,7 @@ const Dashboard = ({
                 Delete Account
               </button>
             </div>
-            <div>
-              <Suspense
-                fallback={
-                  <div>
-                    <Spinner />
-                  </div>
-                }
-              >
-                {user !== null ? <UserPosts /> : <Spinner />}
-              </Suspense>
-            </div>
+            
           </div>
         ) : (
           <Fragment>
@@ -61,6 +51,17 @@ const Dashboard = ({
           </Fragment>
         )}
       </Suspense>
+      <div>
+              <Suspense
+                fallback={
+                  <div>
+                    <Spinner />
+                  </div>
+                }
+              >
+                {user !== null ? <UserPosts /> : <Spinner />}
+              </Suspense>
+            </div>
     </Fragment>
   );
 };

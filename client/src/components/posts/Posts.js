@@ -12,8 +12,11 @@ const Posts = ({ getPosts, post: { posts } }) => {
 
   return (
     <Fragment>
+      <h1 className="my-1">Create A Post</h1>
       <PostForm />
+
       <div className="posts">
+        <h1 className="text-center">{posts.length} posts</h1>
         {posts.map((post) => (
           <PostItem key={post._id} post={post} />
         ))}
