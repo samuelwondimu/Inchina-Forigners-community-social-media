@@ -28,7 +28,11 @@ const UserPosts = ({
     <Fragment>
       <div>
         <hr></hr>
-        <h1 className="text-center">My Posts</h1>
+        <div className="my-post">
+        <h1 className="text-center"> {userposts.length}{' '}Posts</h1>
+        </div>
+        <br className="clearBoth"></br>
+        
         {userposts.map((post) => (
           <div className="post p-1 my-1" style={{ color: '#333' }}>
             <div>
