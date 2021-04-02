@@ -11,6 +11,7 @@ import Posts from '../posts/Posts';
 import Post from '../post/Post';
 import NotFound from '../layout/NotFound';
 import PrivateRoute from '../routing/PrivateRoute';
+import Search from '../search/Search';
 
 const Routes = (props) => {
   return (
@@ -26,6 +27,7 @@ const Routes = (props) => {
         <PrivateRoute exact path="/edit-profile" component={ProfileForm} />
         <PrivateRoute exact path="/posts" component={Posts} />
         <PrivateRoute exact path="/posts/:id" component={Post} />
+        <PrivateRoute exact path="/search" component={Search} />
         <Route component={NotFound} />
       </Switch>
     </section>

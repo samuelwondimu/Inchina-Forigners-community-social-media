@@ -29,7 +29,7 @@ const PostItem = ({
       </div>
 
       <div>
-        {Route() === '/posts' ? (
+        {Route() === '/posts' || Route() === '/search' ? (
           <div
             dangerouslySetInnerHTML={{
               __html: text.substring(0, 400).trim() + '...'

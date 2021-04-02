@@ -13,7 +13,6 @@ const ProfileItem = ({
 }) => {
   return (
     <Fragment>
-      <hr></hr>
       <div className="profile">
         <img
           style={{ width: '150px' }}

@@ -8,6 +8,12 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
   const authLinks = (
     <ul>
       <li>
+        <Link to="/search">
+          {' '}
+          <i class="fas fa-search"></i> Search
+        </Link>
+      </li>
+      <li>
         <Link to="/profiles">community</Link>
       </li>
       <li>
@@ -29,6 +35,12 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
   const guestLinks = (
     <ul>
       <li>
+        <Link to="/search">
+          {' '}
+          <i class="fas fa-search"></i> Search
+        </Link>
+      </li>
+      <li>
         <Link to="/profiles">Community</Link>
       </li>
       <li>
@@ -45,14 +57,6 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
       <h1>
         <Link to="/">inChina Community</Link>
       </h1>
-      <div class="search-bar">
-        <form>
-          <input type="text" placeholder="Search" />
-          <button className="search-button">
-            <i class="fas fa-search"></i>
-          </button>
-        </form>
-      </div>
       <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
     </nav>
   );

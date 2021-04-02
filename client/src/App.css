@@ -539,7 +539,7 @@ input[type='text'] {
   padding: 0 20px;
   font-size: 1.2rem;
   color: #333;
-  border: 1px solid #017143;
+  border: 1px solid #28a745;
   border-radius: 2px 0 0 2px;
   z-index: 2;
 }
@@ -560,7 +560,7 @@ input:focus {
   cursor: pointer;
   font-size: 14px;
   text-align: center;
-  background-color: #a6c7ae;
+  background-color: #28a745;
   color: #333;
   z-index: 1;
 }
