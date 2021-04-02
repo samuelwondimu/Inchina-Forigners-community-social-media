@@ -1,15 +1,26 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { logout } from '../../actions/auth';
+import '../../styles/components/HeaderBar.css';
+import Avatar from '../common/Avatar';
+import { getCurrentProfile } from '../../actions/profile';
 
-const Navbar = ({ auth: { isAuthenticated }, logout }) => {
+const Navbar = ({
+  auth: { isAuthenticated },
+  logout,
+  getCurrentProfile,
+  profile: { profile, loading }
+}) => {
+  useEffect(() => {
+    getCurrentProfile();
+  }, [getCurrentProfile]);
+
   const authLinks = (
     <ul>
       <li>
         <Link to="/search">
-          {' '}
           <i class="fas fa-search"></i> Search
         </Link>
       </li>
@@ -19,14 +30,12 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
       <li>
         <Link to="/posts">posts</Link>
       </li>
-      <li>
-        <Link to="/dashboard">
-          <span className="hide-sm">my profile</span>
-        </Link>
+      <li className="hide-sm">
+        <Link to="/dashboard">my profile</Link>
       </li>
-      <li>
+      <li className="hide-sm">
         <a onClick={logout} href="#!">
-          <span className="hide-sm">logout</span>
+          logout
         </a>
       </li>
     </ul>
@@ -36,7 +45,6 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
     <ul>
       <li>
         <Link to="/search">
-          {' '}
           <i class="fas fa-search"></i> Search
         </Link>
       </li>
@@ -53,22 +61,26 @@ const Navbar = ({ auth: { isAuthenticated }, logout }) => {
   );
 
   return (
-    <nav className="navbar">
-      <h1>
-        <Link to="/">inChina Community</Link>
-      </h1>
-      <Fragment>{isAuthenticated ? authLinks : guestLinks}</Fragment>
-    </nav>
+    <div id="header">
+      <div id="logo">
+        <Link to={'/'}>
+          <h3>InChina</h3>
+        </Link>
+      </div>
+      <div id="nav-wrapper">{isAuthenticated ? authLinks : guestLinks}</div>
+    </div>
   );
 };
 
 Navbar.propTypes = {
+  getCurrentProfile: PropTypes.func.isRequired,
   logout: PropTypes.func.isRequired,
   auth: PropTypes.object.isRequired
 };
 
 const mapStateToProps = (state) => ({
-  auth: state.auth
+  auth: state.auth,
+  profile: state.profile
 });
 
-export default connect(mapStateToProps, { logout })(Navbar);
+export default connect(mapStateToProps, { getCurrentProfile, logout })(Navbar);

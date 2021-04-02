@@ -4,8 +4,10 @@ import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { getCurrentProfile, deleteAccount } from '../../actions/profile';
 // import ProfileItem from './ProfileItem';
+import '../../styles/components/Profile.css';
 import UserPosts from './UserPosts';
 import Spinner from '../layout/Spinner';
+import Button from '../common/Button';
 
 const ProfileItem = lazy(() => import('./ProfileItem'));
 
@@ -20,49 +22,56 @@ const Dashboard = ({
   }, [getCurrentProfile]);
 
   return (
-    <Fragment>
-      <p className="lead">Welcome {user && user.name}</p>
-      <Suspense
-        fallback={
-          <div>
-            <Spinner />
-          </div>
-        }
-      >
-        {profile !== null ? (
-          <div>
-            <ProfileItem profile={profile} />
+    <div className="container profile--layout">
+      <section id="sidebar--left--profile">
+        <Suspense
+          fallback={
             <div>
-              <button
+              <Spinner />
+            </div>
+          }
+        >
+          {profile !== null ? (
+            <Fragment>
+              <ProfileItem profile={profile} />
+
+              <Button
                 className="btn btn-danger"
                 onClick={() => deleteAccount()}
               >
                 Delete Account
-              </button>
-            </div>
-            
-          </div>
-        ) : (
-          <Fragment>
-            <p>You have not yet setup a profile, please add some info</p>
-            <Link to="/create-profile" className="btn btn-primary my-1">
-              Create Profile
+              </Button>
+            </Fragment>
+          ) : (
+            <Fragment>
+              <p>You have not yet setup a profile, please add some info</p>
+              <Link to="/create-profile" className="btn btn-primary my-1">
+                Create Profile
+              </Link>
+            </Fragment>
+          )}
+        </Suspense>
+      </section>
+      <section id="center-content">
+        <div className="card">
+          <div className="card__body">
+            <Link className="btn btn--main--outline" to={'/'}>
+              &#8592; Go Back{' '}
             </Link>
-          </Fragment>
-        )}
-      </Suspense>
-      <div>
-              <Suspense
-                fallback={
-                  <div>
-                    <Spinner />
-                  </div>
-                }
-              >
-                {user !== null ? <UserPosts /> : <Spinner />}
-              </Suspense>
+          </div>
+        </div>
+        <Suspense
+          fallback={
+            <div>
+              <Spinner />
             </div>
-    </Fragment>
+          }
+        >
+          {user !== null ? <UserPosts /> : <Spinner />}
+        </Suspense>
+      </section>
+      <section id="sidebar--right--profile">hello</section>
+    </div>
   );
 };
 Dashboard.propTypes = {

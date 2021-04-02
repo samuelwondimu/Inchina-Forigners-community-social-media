@@ -1,10 +1,15 @@
-import React, { Fragment, useEffect } from 'react';
+import React, { Fragment, useEffect, lazy, Suspense } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import PostItem from './PostItem';
-import PostForm from './PostForm';
+import { getCurrentProfile } from '../../actions/profile';
 import { getPosts } from '../../actions/post';
+import '../../styles/components/Home.css';
+import Spinner from '../layout/Spinner';
 
+const PostItem = lazy(() => import('./PostItem'));
+const PostForm = lazy(() => import('./PostForm'));
+const Contributors = lazy(() => import('./Contributors'));
+const TopPosts = lazy(() => import('./TopPosts'));
 const Posts = ({ getPosts, post: { posts } }) => {
   useEffect(() => {
     getPosts();
@@ -12,15 +17,28 @@ const Posts = ({ getPosts, post: { posts } }) => {
 
   return (
     <Fragment>
-      <h1 className="my-1">Create A Post</h1>
-      <PostForm />
-
-      <div className="posts">
-        <h1 className="text-center">{posts.length} posts</h1>
-        {posts.map((post) => (
-          <PostItem key={post._id} post={post} />
-        ))}
-      </div>
+      <Suspense
+        fallback={
+          <div>
+            <Spinner />
+          </div>
+        }
+      >
+        <div className="container home--layout">
+          <section id="sidebar--left--home">
+            <Contributors />
+          </section>
+          <section id="center-content">
+            <PostForm />
+            {posts.map((post) => (
+              <PostItem key={post._id} post={post} />
+            ))}
+          </section>
+          <section id="sidebar--right--home">
+            <TopPosts posts={posts} />
+          </section>
+        </div>
+      </Suspense>
     </Fragment>
   );
 };

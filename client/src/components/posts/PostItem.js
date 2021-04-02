@@ -5,6 +5,8 @@ import { Link } from 'react-router-dom';
 import formatDate from '../../utils/formatDate';
 import { connect } from 'react-redux';
 import { addLike, removeLike, deletePost } from '../../actions/post';
+import Avatar from '../common/Avatar';
+import Button from '../common/Button';
 
 const Route = () => {
   const location = useLocation();
@@ -17,72 +19,75 @@ const PostItem = ({
   deletePost,
   auth,
   post: { _id, text, name, avatar, user, likes, comments, date },
-  showActions
+  showAction
 }) => (
-  <Fragment>
-    <div className="post p-1 my-1" style={{ color: '#333' }}>
-      <div>
-        <Link to={`/profile/${user}`}>
-          <img className="round-img" src={avatar} alt="" />
-          <h4 style={{ color: '#333' }}>{name}</h4>
-        </Link>
-      </div>
-
-      <div>
-        {Route() === '/posts' || Route() === '/search' ? (
-          <div
-            dangerouslySetInnerHTML={{
-              __html: text.substring(0, 400).trim() + '...'
-            }}
-          ></div>
-        ) : (
-          <div
-            dangerouslySetInnerHTML={{
-              __html: text
-            }}
-          ></div>
-        )}
-
-        <p className="post-date">Posted on {formatDate(date)}</p>
-        {showActions && (
-          <Fragment>
-            <button
-              onClick={() => addLike(_id)}
-              type="button"
-              className="btn btn-light"
-            >
-              <i className="fas fa-thumbs-up" />{' '}
-              <span>{likes.length > 0 && <span>{likes.length}</span>}</span>
-            </button>
-            <button
-              onClick={() => removeLike(_id)}
-              type="button"
-              className="btn btn-light"
-            >
-              <i className="fas fa-thumbs-down" />
-            </button>
-            <Link to={`/posts/${_id}`} className="btn">
-              comments{' '}
-              {comments.length > 0 && (
-                <span className="comment-count" style={{ color: '#fff' }}>
-                  {comments.length}
-                </span>
-              )}
+  <section>
+    <div className="card">
+      <div className="card__body">
+        <div className="post-wrapper">
+          <div className="post-header-wrapper">
+            <Avatar src={avatar} alt="profile" />
+            <Link to={`/profile/${user}`} className="post-user-name">
+              <h6 style={{ color: '#333' }}>{name}</h6>
+              <p className="post-meta">{formatDate(date)}</p>
             </Link>
-            {!auth.loading && user === auth.user._id && (
-              <button
-                onClick={() => deletePost(_id)}
+          </div>
+          <div className="post-contents">
+            <div className="post-votes">
+              <i
+                onClick={() => addLike(_id)}
+                className="fas fa-thumbs-up vote-icon up-arrow"
+              />
+              <p>{likes.length}</p>
+              <i
+                onClick={() => removeLike(_id)}
                 type="button"
-                className="btn btn-danger"
-              >
-                <i className="fas fa-times" />
-              </button>
-            )}
-          </Fragment>
-        )}
+                className="fas fa-thumbs-down vote-icon down-arrow"
+              />
+            </div>
+            <div className="post-body">
+              <p>
+                {Route() === '/posts' || Route() === '/search' ? (
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html: text.substring(0, 400).trim() + '...'
+                    }}
+                  ></p>
+                ) : (
+                  <p
+                    dangerouslySetInnerHTML={{
+                      __html: text
+                    }}
+                  ></p>
+                )}
+              </p>
+            </div>
+            <div>
+              {/* {showActions && (
+                <Link to={`/posts/${_id}`} className="btn">
+                  comments{' '}
+                  {comments.length > 0 && (
+                    <span className="comment-count" style={{ color: '#fff' }}>
+                      {comments.length}
+                    </span>
+                  )}
+                </Link>
+                {!auth.loading && user === auth.user._id && (
+                  <button
+                    onClick={() => deletePost(_id)}
+                    type="button"
+                    className="btn btn-danger"
+                  >
+                    <i className="fas fa-times" />
+                  </button>
+                )}
+            )} */}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </Fragment>
+  </section>
 );
 
 PostItem.defaultProps = {

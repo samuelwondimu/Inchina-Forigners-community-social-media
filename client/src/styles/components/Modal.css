@@ -1,0 +1,72 @@
+.modal-backdrop {
+  position: fixed;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
+  z-index: 1000;
+}
+.model-backdrop.active {
+  display: flex;
+  opacity: 1;
+}
+
+.model-backdrop.inactive {
+  opacity: 0;
+  display: none;
+}
+
+.modal-backdrop .mumble-modal {
+  background: White;
+  border-radius: 6px;
+  width: 100%;
+  max-width: 600px;
+  max-height: 95%;
+  padding: 20px;
+  margin: 0 15px;
+}
+.close-modal {
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+.close-icon {
+  font-size: 14px;
+  padding: 0;
+}
+@media (min-width: 400px) {
+  .modal-backdrop .mumble-modal {
+    margin: 0 25px;
+  }
+
+  .close-icon {
+    font-size: 16px;
+    padding: 2px;
+  }
+}
+@media (min-width: 1000px) {
+  .close-icon {
+    font-size: 18px;
+    padding: 3px;
+  }
+}
+
+.mumble-modal .modal-header {
+  position: relative;
+}
+.modal-header .modal-close {
+  position: absolute;
+  right: 0;
+}
+
+.mumble-modal .modal-actions {
+  margin-top: 15px;
+  display: flex;
+  width: 100%;
+  justify-content: flex-end;
+}

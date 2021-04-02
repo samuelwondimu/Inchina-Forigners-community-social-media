@@ -11,6 +11,7 @@ import store from './store';
 import { loadUser } from './actions/auth';
 import setAuthToken from './utils/setAuthToken';
 
+import './styles/App.css';
 import './App.css';
 
 const App = () => {

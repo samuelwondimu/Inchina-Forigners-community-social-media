@@ -1,0 +1,48 @@
+#header {
+  /* Change this to that sticky header I like*/
+  position: sticky;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #3f4156;
+  color: #fff;
+  padding-left: 20px;
+  padding-right: 20px;
+  z-index: 100;
+}
+
+#logo {
+  font-weight: 800;
+  font-size: 22px;
+}
+
+#logo a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 800;
+}
+#nav-wrapper ul {
+  list-style: none;
+  display: flex;
+}
+
+#nav-wrapper a {
+  color: #fff;
+  padding: 0.45rem;
+  margin: 0 0.25rem;
+  font-weight: 800;
+  font-size: 16px;
+}
+
+#nav-wrapper li {
+  font-size: 1.3rem;
+}
+#nav-wrapper a:hover {
+  color: var(--primary-color);
+}
+
+#nav-wrapper .welcome span {
+  margin-right: 0.6rem;
+}
