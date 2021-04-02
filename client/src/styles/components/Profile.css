@@ -1,6 +1,6 @@
 .profile--layout {
   display: grid;
-  grid-template-columns: 1fr 2fr 1fr;
+  grid-template-columns: 1fr 2fr;
   column-gap: 0.5rem;
 }
 

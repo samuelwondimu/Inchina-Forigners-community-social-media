@@ -8,7 +8,7 @@ import '../../styles/components/Profile.css';
 import UserPosts from './UserPosts';
 import Spinner from '../layout/Spinner';
 import Button from '../common/Button';
-
+import SkillTags from './SkillTags';
 const ProfileItem = lazy(() => import('./ProfileItem'));
 
 const Dashboard = ({
@@ -34,7 +34,7 @@ const Dashboard = ({
           {profile !== null ? (
             <Fragment>
               <ProfileItem profile={profile} />
-
+              <SkillTags skills={profile.skills} />
               <Button
                 className="btn btn-danger"
                 onClick={() => deleteAccount()}
@@ -70,7 +70,6 @@ const Dashboard = ({
           {user !== null ? <UserPosts /> : <Spinner />}
         </Suspense>
       </section>
-      <section id="sidebar--right--profile">hello</section>
     </div>
   );
 };
