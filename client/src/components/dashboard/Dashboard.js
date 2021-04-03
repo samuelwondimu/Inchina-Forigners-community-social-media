@@ -22,7 +22,7 @@ const Dashboard = ({
   }, [getCurrentProfile]);
 
   return (
-    <div className="container profile--layout">
+    <div className="profile--layout">
       <section id="sidebar--left--profile">
         <Suspense
           fallback={

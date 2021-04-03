@@ -24,7 +24,7 @@ const Posts = ({ getPosts, post: { posts } }) => {
           </div>
         }
       >
-        <div className="container home--layout">
+        <div className="home--layout">
           <section id="sidebar--left--home">
             <Contributors />
           </section>
