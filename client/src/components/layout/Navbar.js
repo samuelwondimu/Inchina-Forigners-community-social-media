@@ -55,20 +55,22 @@ const Navbar = ({ auth: { isAuthenticated }, logout, getCurrentProfile }) => {
   );
 
   return (
-    <div id="header">
-      <div id="logo">
-        <Link to={'/'}>
-          <h2>𝖎𝖓𝖈𝖍𝖎𝖓𝖆</h2>
-        </Link>
-      </div>
-      <div>
-        <div id="nav-wrapper">{isAuthenticated ? authLinks : guestLinks}</div>
-        <div className="mobile-menu nav-wrapper" onClick={handleClick}>
-          {click ? (
-            <i class="fas fa-times fa-2x"></i>
-          ) : (
-            <i class="fas fa-bars fa-2x"></i>
-          )}
+    <div className="nav--bar">
+      <div id="header">
+        <div id="logo">
+          <Link to={'/'}>
+            <h2>𝖎𝖓𝖈𝖍𝖎𝖓𝖆</h2>
+          </Link>
+        </div>
+        <div>
+          <div id="nav-wrapper">{isAuthenticated ? authLinks : guestLinks}</div>
+          <div className="mobile-menu nav-wrapper" onClick={handleClick}>
+            {click ? (
+              <i class="fas fa-times fa-2x"></i>
+            ) : (
+              <i class="fas fa-bars fa-2x"></i>
+            )}
+          </div>
         </div>
       </div>
     </div>
