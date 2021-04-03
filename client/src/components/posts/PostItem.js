@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { addLike, removeLike, deletePost } from '../../actions/post';
 import Avatar from '../common/Avatar';
 import Button from '../common/Button';
-
+import AuthorBox from '../common/AuthorBox';
 const Route = () => {
   const location = useLocation();
   return location.pathname;
@@ -26,11 +26,10 @@ const PostItem = ({
       <div className="card__body">
         <div className="post-wrapper">
           <div className="post-header-wrapper">
-            <Avatar src={avatar} alt="profile" />
-            <Link to={`/profile/${user}`} className="post-user-name">
-              <h6 style={{ color: '#333' }}>{name}</h6>
+            <AuthorBox avatarSrc={avatar} name={name} size="md">
               <p className="post-meta">{formatDate(date)}</p>
-            </Link>
+            </AuthorBox>
+            <Button buttonStyle="main" outline text="Profile" size="sm" />
           </div>
           <div className="post-contents">
             <div className="post-votes">
@@ -38,7 +37,7 @@ const PostItem = ({
                 onClick={() => addLike(_id)}
                 className="fas fa-thumbs-up vote-icon up-arrow"
               />
-              <p>{likes.length}</p>
+              <p className="vote-count">{likes.length}</p>
               <i
                 onClick={() => removeLike(_id)}
                 type="button"
@@ -46,21 +45,19 @@ const PostItem = ({
               />
             </div>
             <div className="post-body">
-              <p>
-                {Route() === '/posts' || Route() === '/search' ? (
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: text.substring(0, 400).trim() + '...'
-                    }}
-                  ></p>
-                ) : (
-                  <p
-                    dangerouslySetInnerHTML={{
-                      __html: text
-                    }}
-                  ></p>
-                )}
-              </p>
+              {Route() === '/posts' || Route() === '/search' ? (
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: text.substring(0, 400).trim() + '...'
+                  }}
+                ></p>
+              ) : (
+                <p
+                  dangerouslySetInnerHTML={{
+                    __html: text
+                  }}
+                ></p>
+              )}
             </div>
             <div>
               {/* {showActions && (
