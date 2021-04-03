@@ -6,7 +6,6 @@ import { logout } from '../../actions/auth';
 import '../../styles/components/HeaderBar.css';
 import Avatar from '../common/Avatar';
 import { getCurrentProfile } from '../../actions/profile';
-import Logo from '../../img/inchina-logo.png';
 
 const Navbar = ({
   auth: { isAuthenticated },
