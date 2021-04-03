@@ -6,6 +6,7 @@ import { logout } from '../../actions/auth';
 import '../../styles/components/HeaderBar.css';
 import Avatar from '../common/Avatar';
 import { getCurrentProfile } from '../../actions/profile';
+import Logo from '../../img/inchina-logo.png';
 
 const Navbar = ({
   auth: { isAuthenticated },
@@ -64,7 +65,7 @@ const Navbar = ({
     <div id="header">
       <div id="logo">
         <Link to={'/'}>
-          <h3>InChina</h3>
+          <h2>𝖎𝖓𝖈𝖍𝖎𝖓𝖆</h2>
         </Link>
       </div>
       <div id="nav-wrapper">{isAuthenticated ? authLinks : guestLinks}</div>
