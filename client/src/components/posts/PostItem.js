@@ -19,7 +19,7 @@ const PostItem = ({
   deletePost,
   auth,
   post: { _id, text, name, avatar, user, likes, comments, date },
-  showAction
+  showActions
 }) => (
   <section>
     <div className="card">
@@ -35,20 +35,20 @@ const PostItem = ({
             <div className="post-votes">
               <i
                 onClick={() => addLike(_id)}
-                className="fas fa-thumbs-up vote-icon up-arrow"
+                className="fas fa-thumbs-up fa-2x vote-icon up-arrow"
               />
               <p className="vote-count">{likes.length}</p>
               <i
                 onClick={() => removeLike(_id)}
                 type="button"
-                className="fas fa-thumbs-down vote-icon down-arrow"
+                className="fas fa-thumbs-down fa-2x vote-icon down-arrow"
               />
             </div>
             <div className="post-body">
               {Route() === '/posts' || Route() === '/search' ? (
                 <p
                   dangerouslySetInnerHTML={{
-                    __html: text.substring(0, 400).trim() + '...'
+                    __html: text.substring(0, 400).trim() + ''
                   }}
                 ></p>
               ) : (
@@ -59,27 +59,37 @@ const PostItem = ({
                 ></p>
               )}
             </div>
-            <div>
-              {/* {showActions && (
-                <Link to={`/posts/${_id}`} className="btn">
-                  comments{' '}
-                  {comments.length > 0 && (
-                    <span className="comment-count" style={{ color: '#fff' }}>
-                      {comments.length}
-                    </span>
+          </div>
+          <div className="post-actions-wrapper">
+            {showActions && (
+              <Fragment>
+                <div className="action-wrapper">
+                  <i className="fas fa-comments"></i>
+                  <Link to={`/posts/${_id}`}>
+                    {comments.length > 0 && (
+                      <span className="post-action-text">
+                        {comments.length}
+                      </span>
+                    )}
+                  </Link>
+                </div>
+                <div className="action-wrapper">
+                  <div role="button" className="post-comment-wrapper">
+                    <i className="fas fa-comment-lines"> </i>
+                    <span className="post-action-text">Comment</span>
+                  </div>
+                </div>
+                <div className="action-wrapper">
+                  {!auth.loading && user === auth.user._id && (
+                    <i
+                      className="fas fa-trash"
+                      onClick={() => deletePost(_id)}
+                    />
                   )}
-                </Link>
-                {!auth.loading && user === auth.user._id && (
-                  <button
-                    onClick={() => deletePost(_id)}
-                    type="button"
-                    className="btn btn-danger"
-                  >
-                    <i className="fas fa-times" />
-                  </button>
-                )}
-            )} */}
-            </div>
+                </div>
+                {/*  */}
+              </Fragment>
+            )}
           </div>
         </div>
       </div>

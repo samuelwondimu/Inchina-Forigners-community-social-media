@@ -8,6 +8,7 @@
   --color-bg: #f4f6f9;
   --color-light-gray: #bbb;
   --color-white: #fff;
+  --color-danger: rgb(170, 9, 9);
 
   --font-base: 'Poppins', Arial, Helvetica, 'Segoe UI', Roboto, Ubuntu,
     sans-serif;

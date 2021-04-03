@@ -36,18 +36,15 @@ const Dashboard = ({
               <ProfileItem profile={profile} />
               <SkillTags skills={profile.skills} />
               <Button
-                className="btn btn-danger"
+                className="btn btn--danger"
                 onClick={() => deleteAccount()}
-              >
-                Delete Account
-              </Button>
+                text="Delete Account"
+              ></Button>
             </Fragment>
           ) : (
             <Fragment>
               <p>You have not yet setup a profile, please add some info</p>
-              <Link to="/create-profile" className="btn btn-primary my-1">
-                Create Profile
-              </Link>
+              <Link to="/create-profile">Create Profile</Link>
             </Fragment>
           )}
         </Suspense>
