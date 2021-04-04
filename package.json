@@ -5,7 +5,6 @@
   "engines": {
     "node": "v15.12.0"
   },
-  "proxy": "https://inchina.herokuapp.com/",
   "dependencies": {
     "axios": "^0.21.1",
     "react": "^17.0.1",
@@ -40,5 +39,6 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "proxy": "https://inchina-api.herokuapp.com/api"
 }
