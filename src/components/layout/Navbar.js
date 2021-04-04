@@ -1,10 +1,10 @@
-import React, { Fragment, useState } from "react";
-import { Link } from "react-router-dom";
-import { connect } from "react-redux";
-import PropTypes from "prop-types";
-import { logout } from "../../actions/auth";
-import "../../styles/components/HeaderBar.css";
-import Avatar from "../common/Avatar";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import { logout } from '../../actions/auth';
+import '../../styles/components/HeaderBar.css';
+import Avatar from '../common/Avatar';
 
 const Navbar = ({ auth: { isAuthenticated }, logout, getCurrentProfile }) => {
   const [click, setClick] = useState(false);
@@ -12,7 +12,7 @@ const Navbar = ({ auth: { isAuthenticated }, logout, getCurrentProfile }) => {
   const closeMobileMenu = () => setClick(false);
 
   const authLinks = (
-    <ul className={click ? "nav-options active" : "nav-options"}>
+    <ul className={click ? 'nav-options active' : 'nav-options'}>
       <li className="option" onClick={closeMobileMenu}>
         <Link to="/search">
           <i class="fas fa-search"></i> Search
@@ -36,7 +36,7 @@ const Navbar = ({ auth: { isAuthenticated }, logout, getCurrentProfile }) => {
   );
 
   const guestLinks = (
-    <ul className={click ? "nav-options active" : "nav-options"}>
+    <ul className={click ? 'nav-options active' : 'nav-options'}>
       <li className="option" onClick={closeMobileMenu}>
         <Link to="/search">
           <i class="fas fa-search"></i> Search
@@ -57,7 +57,7 @@ const Navbar = ({ auth: { isAuthenticated }, logout, getCurrentProfile }) => {
   return (
     <div id="header">
       <div id="logo">
-        <Link to={"/"}>
+        <Link to={'/'}>
           <h2>𝖎𝖓𝖈𝖍𝖎𝖓𝖆</h2>
         </Link>
       </div>
@@ -77,11 +77,11 @@ const Navbar = ({ auth: { isAuthenticated }, logout, getCurrentProfile }) => {
 
 Navbar.propTypes = {
   logout: PropTypes.func.isRequired,
-  auth: PropTypes.object.isRequired,
+  auth: PropTypes.object.isRequired
 };
 
 const mapStateToProps = (state) => ({
-  auth: state.auth,
+  auth: state.auth
 });
 
 export default connect(mapStateToProps, { logout })(Navbar);

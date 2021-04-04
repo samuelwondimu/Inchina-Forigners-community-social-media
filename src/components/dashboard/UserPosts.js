@@ -1,16 +1,10 @@
 import React, { Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { Link, useLocation } from 'react-router-dom';
 import { getUserPosts } from '../../actions/post';
-import formatDate from '../../utils/formatDate';
+// import formatDate from '../../utils/formatDate';
 import { addLike, removeLike, deletePost } from '../../actions/post';
 import PostItem from '../posts/PostItem';
-
-const Route = () => {
-  const location = useLocation();
-  return location.pathname;
-};
 
 const UserPosts = ({
   addLike,

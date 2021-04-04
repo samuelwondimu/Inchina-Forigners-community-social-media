@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import { addPost } from '../../actions/post';
 import '../../styles/components/CreatePost.css';
 import Button from '../common/Button';
-import Avatar from '../common/Avatar';
 const PostForm = ({ addPost }) => {
   const [text, setText] = useState('');
 

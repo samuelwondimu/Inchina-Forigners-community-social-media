@@ -1,6 +1,6 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
-import DashboardActions from './DashboardActions';
+// import DashboardActions from './DashboardActions';
 import Avatar from '../common/Avatar';
 
 const ProfileItem = ({

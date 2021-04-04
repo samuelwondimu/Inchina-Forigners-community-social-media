@@ -45,7 +45,7 @@ const Search = ({
           {profiles.length > 0 ? (
             profiles
               .filter((profile) => {
-                if (searchTerm == '') return profile;
+                if (searchTerm === '') return profile;
                 else if (
                   profile.user.name
                     .toLowerCase()
@@ -64,7 +64,7 @@ const Search = ({
           <h1>posts</h1>
           {posts
             .filter((post) => {
-              if (searchTerm == '') return post;
+              if (searchTerm === '') return post;
               else if (
                 post.text.toLowerCase().includes(searchTerm.toLowerCase()) ||
                 post.name.toLowerCase().includes(searchTerm.toLowerCase())

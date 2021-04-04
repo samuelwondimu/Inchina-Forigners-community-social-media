@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import formatDate from '../../utils/formatDate';
 import { connect } from 'react-redux';
 import { addLike, removeLike, deletePost } from '../../actions/post';
-import Avatar from '../common/Avatar';
 import Button from '../common/Button';
 import AuthorBox from '../common/AuthorBox';
 const Route = () => {
